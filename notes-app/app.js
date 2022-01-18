@@ -15,6 +15,13 @@ const yargs = require("yargs");
 // console.log(validator.isEmail("abc@gmail.com"));
 // console.log(success);
 
+const data = { name: "Abhishek", planet: "Earth", age: 24 };
+
+fs.writeFileSync("try-json.json", JSON.stringify(data));
+const dataBuffer = fs.readFileSync("try-json.json");
+console.log(dataBuffer.toString());
+console.log(JSON.parse(dataBuffer).age);
+
 const command = process.argv[2];
 
 if (command === "add") {
