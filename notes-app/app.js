@@ -3,6 +3,7 @@ const fs = require("fs");
 // const { name, add } = require("./utils.js");
 // const chalk = require("chalk");
 const yargs = require("yargs");
+const notes = require("./notes");
 
 // const sum = add(2, 3);
 
@@ -15,20 +16,20 @@ const yargs = require("yargs");
 // console.log(validator.isEmail("abc@gmail.com"));
 // console.log(success);
 
-const data = { name: "Abhishek", planet: "Earth", age: 24 };
+// const data = { name: "Abhishek", planet: "Earth", age: 24 };
 
-fs.writeFileSync("try-json.json", JSON.stringify(data));
-const dataBuffer = fs.readFileSync("try-json.json");
-console.log(dataBuffer.toString());
-console.log(JSON.parse(dataBuffer).age);
+// fs.writeFileSync("try-json.json", JSON.stringify(data));
+// const dataBuffer = fs.readFileSync("try-json.json");
+// console.log(dataBuffer.toString());
+// console.log(JSON.parse(dataBuffer).age);
 
-const command = process.argv[2];
+// const command = process.argv[2];
 
-if (command === "add") {
-  console.log("Adding note!");
-} else if (command === "remove") {
-  console.log("Removing note!");
-}
+// if (command === "add") {
+//   console.log("Adding note!");
+// } else if (command === "remove") {
+//   console.log("Removing note!");
+// }
 
 yargs.command({
   command: "add",
@@ -46,8 +47,7 @@ yargs.command({
     },
   },
   handler: function (argv) {
-    console.log("Title:", argv.title);
-    console.log("Body:", argv.body);
+    notes.addNote(argv.title, argv.body);
   },
 });
 
