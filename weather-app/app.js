@@ -1,5 +1,6 @@
 const request = require("request");
 const geoCode = require("./utils/geocode");
+const forecast = require("./utils/forecast");
 
 // const url =
 //   "http://api.weatherstack.com/current?access_key=1bd589b2d867b96a13d5735042dc5f94&query=New%20Delhi";
@@ -32,4 +33,8 @@ const geoCode = require("./utils/geocode");
 geoCode("Kolkata", (error, response) => {
   console.log("Error: " + error);
   console.log("Data: ", response);
+  forecast(response.location, (error, data) => {
+    console.log("Error: " + error);
+    console.log("Temperature:" + data);
+  });
 });
